@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JIRA AI Bridge — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">JB</div>
+      <div>
+        <h1>JIRA AI Bridge</h1>
+        <p class="tagline">Zero manual logging — your AI work, captured automatically.</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <span class="client-badge client-{{ client_kind }}" title="Active JIRA backend">
+        {{ client_kind|upper }} mode
+      </span>
+      <button id="theme-toggle" class="icon-btn" title="Toggle dark mode">&#9728;</button>
+      <button id="sync-all" class="btn btn-primary">Sync all pending</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Summary stats -->
+    <section class="stats" id="stats">
+      <div class="stat-card">
+        <span class="stat-label">Tasks today</span>
+        <span class="stat-value" id="stat-today">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Tasks this week</span>
+        <span class="stat-value" id="stat-week">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Total tasks</span>
+        <span class="stat-value" id="stat-total">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Time logged</span>
+        <span class="stat-value" id="stat-time">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Pending sync</span>
+        <span class="stat-value" id="stat-pending">—</span>
+      </div>
+    </section>
+
+    <!-- Breakdown -->
+    <section class="breakdown">
+      <div class="panel">
+        <h3>By source</h3>
+        <div id="by-source" class="chips"></div>
+      </div>
+      <div class="panel">
+        <h3>By project</h3>
+        <div id="by-project" class="chips"></div>
+      </div>
+    </section>
+
+    <!-- Filter toggle -->
+    <section class="toolbar">
+      <div class="segmented" id="range-toggle">
+        <button class="seg active" data-range="today">Today</button>
+        <button class="seg" data-range="week">This week</button>
+        <button class="seg" data-range="all">All</button>
+      </div>
+      <div class="toolbar-right">
+        <span id="refresh-note" class="muted">auto-refresh on</span>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="timeline">
+      <div class="empty" id="empty-state">Loading work events…</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>JIRA AI Bridge · project <strong>{{ project_key }}</strong></span>
+    <span class="muted">CodeAlpha — Task Automation, elevated.</span>
+  </footer>
+
+  <script>
+    window.JIRA_BASE_URL = "{{ jira_base_url }}";
+    window.CLIENT_KIND = "{{ client_kind }}";
+  </script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
