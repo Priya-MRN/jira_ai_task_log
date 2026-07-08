@@ -14,6 +14,16 @@ fully offline against a local mock JIRA when no credentials are configured.
 
 ---
 
+## 🎬 Demo Video
+
+A short walkthrough of the dashboard — summary stats, the work timeline, and
+one-click **Sync to JIRA**. Click the poster to play
+[`docs/demo.mp4`](docs/demo.mp4):
+
+[![Watch the demo](docs/demo-thumbnail.png)](docs/demo.mp4)
+
+---
+
 ## 📸 Screenshots
 
 ### Dashboard overview
