@@ -8,7 +8,6 @@ version = "1.0.0"
 description = "Bridge AI coding sessions (Claude Code, AI editors) to JIRA with zero manual logging."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
 authors = [{ name = "Interconnected" }]
 keywords = ["jira", "automation", "claude", "ai", "worklog", "productivity"]
 dependencies = [
